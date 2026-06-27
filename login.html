@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ota Bobo Somsalari</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --saffron:    #C8860A;
+            --clay:       #8B3A1C;
+            --cream:      #FDF6EC;
+            --charcoal:   #1A1208;
+            --mist:       #F5ECD9;
+            --white:      #FFFFFF;
+            --shadow:     rgba(26, 18, 8, 0.12);
+            --gold-light: rgba(200, 134, 10, 0.08);
+            --gold-mid:   rgba(200, 134, 10, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            min-height: 100vh;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--charcoal);
+            padding: 18px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--saffron);
+            letter-spacing: 0.02em;
+        }
+        .logo span { color: var(--white); }
+
+        nav a {
+            color: var(--mist);
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--saffron); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--mist);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Mobile nav drawer */
+        .mobile-nav {
+            display: none;
+            background: var(--charcoal);
+            padding: 0 20px 20px;
+        }
+        .mobile-nav.open { display: block; }
+        .mobile-nav a {
+            display: block;
+            color: var(--mist);
+            text-decoration: none;
+            padding: 12px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: color 0.2s;
+        }
+        .mobile-nav a:last-child { border-bottom: none; }
+        .mobile-nav a:hover { color: var(--saffron); }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--clay) 0%, #5C1F08 100%);
+            color: var(--white);
+            padding: 80px 48px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-tag {
+            display: inline-block;
+            background: var(--saffron);
+            color: var(--charcoal);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.65;
+        }
+        .bt-primary {
+            display: inline-block;
+            background: var(--saffron);
+            color: var(--charcoal);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            padding: 14px 36px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.2s, transform 0.15s;
+            text-decoration: none;
+        }
+        .bt-primary:hover { background: #E09A15; transform: translateY(-2px); }
+
+        /* ── GALLERY ── */
+        .section {
+            padding: 64px 48px;
+        }
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 36px;
+            color: var(--charcoal);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/3;
+            background: var(--mist);
+            box-shadow: 0 2px 12px var(--shadow);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,18,8,0.55) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+        .gallery-item:hover .overlay { opacity: 1; }
+
+        /* ── DIVIDER ── */
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(200,134,10,0.2);
+            margin: 0 48px;
+        }
+
+        /* ── ORDER FORM ── */
+        .order-section {
+            padding: 64px 48px;
+            display: flex;
+            gap: 64px;
+            align-items: flex-start;
+        }
+        .order-info { flex: 1; }
+        .order-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .order-info p {
+            color: #6B5A44;
+            line-height: 1.7;
+            max-width: 360px;
+            margin-bottom: 28px;
+        }
+        .perks {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .perks li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            color: var(--charcoal);
+        }
+        .perks li::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--saffron);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px 36px;
+            box-shadow: 0 8px 40px var(--shadow);
+            width: 420px;
+            flex-shrink: 0;
+        }
+        .form-card a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-decoration: none;
+            color: black;
+        }
+        .form-card p {
+            font-size: 0.83rem;
+            color: #9C8268;
+            margin-bottom: 28px;
+        }
+
+        .div2 {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .field { margin-bottom: 18px; }
+        .field label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+        }
+        .field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #E8D9C0;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            background: var(--cream);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .field input:focus {
+            border-color: var(--saffron);
+            box-shadow: 0 0 0 3px rgba(200,134,10,0.15);
+        }
+
+        .btn-order {
+            width: 100%;
+            padding: 14px;
+            background: var(--clay);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-order:hover { background: #A04520; transform: translateY(-1px); }
+
+        .zakaz-dastavka { margin-top: 4px; }
+        .dastavka1 { display: none; }
+
+        .dastavka { margin-left: 0; }
+
+        /* ── IZOXLAR ── */
+        .izoxlar {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: #9C8268;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .izox-form {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 24px var(--shadow);
+            margin-bottom: 40px;
+            border: 1px solid rgba(200, 134, 10, 0.08);
+        }
+        .form-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .form-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--saffron), var(--clay));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .form-header-text {
+            font-size: 0.85rem;
+            color: #9C8268;
+            font-weight: 500;
+        }
+        .form-header-text strong {
+            display: block;
+            color: var(--charcoal);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .izox-textarea-wrapper { position: relative; margin-bottom: 16px; }
+
+        .izox-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 16px 18px;
+            border: 1.5px solid #E8D9C0;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            background: var(--cream);
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        .izox-textarea-ism {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1.5px solid #E8D9C0;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            background: var(--cream);
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            line-height: 1.6;
+        }
+        .izox-textarea::placeholder,
+        .izox-textarea-ism::placeholder { color: #C4B49A; font-weight: 400; }
+        .izox-textarea:focus,
+        .izox-textarea-ism:focus {
+            border-color: var(--saffron);
+            box-shadow: 0 0 0 4px rgba(200, 134, 10, 0.12);
+            background: var(--white);
+        }
+
+        .izox-btn {
+            padding: 12px 28px;
+            background: var(--clay);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .izox-btn:hover {
+            background: #A04520;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(139, 58, 28, 0.25);
+        }
+        .izox-btn:active { transform: translateY(0); }
+        .izox-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .izoxlar-list { display: flex; flex-direction: column; gap: 16px; }
+        .izoxlar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .izoxlar-count { font-size: 0.85rem; font-weight: 600; color: var(--charcoal); }
+        .izoxlar-count span { color: var(--saffron); font-weight: 700; }
+
+        .izox-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 22px 24px;
+            box-shadow: 0 2px 12px rgba(26, 18, 8, 0.05);
+            border: 1px solid rgba(232, 217, 192, 0.4);
+            transition: box-shadow 0.2s, transform 0.15s;
+            animation: fadeInUp 0.4s ease forwards;
+        }
+        .izox-card:hover {
+            box-shadow: 0 4px 20px rgba(26, 18, 8, 0.08);
+            transform: translateY(-1px);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .izox-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .izox-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--saffron), var(--clay));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .izox-meta { flex: 1; min-width: 0; }
+        .izox-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .izox-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: var(--gold-light);
+            color: var(--saffron);
+            border: 1px solid var(--gold-mid);
+        }
+        .izox-time { font-size: 0.78rem; color: #C4B49A; margin-top: 2px; font-weight: 500; }
+        .izox-body { font-size: 0.92rem; line-height: 1.7; color: #4A3F2F; margin-left: 54px; word-wrap: break-word; }
+        .izox-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 14px;
+            margin-left: 54px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(232, 217, 192, 0.5);
+        }
+        .izox-action {
+            background: none;
+            border: none;
+            color: #9C8268;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+            padding: 4px 0;
+        }
+        .izox-action:hover { color: var(--saffron); }
+        .izox-action.liked { color: var(--clay); }
+
+        .izox-empty { text-align: center; padding: 60px 20px; color: #C4B49A; }
+        .izox-empty-icon { font-size: 52px; display: block; margin-bottom: 16px; opacity: 0.6; }
+        .izox-empty h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--charcoal); margin-bottom: 8px; }
+        .izox-empty p { font-size: 0.9rem; max-width: 300px; margin: 0 auto; line-height: 1.6; }
+
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--charcoal);
+            color: #fff;
+            border-radius: 12px;
+            padding: 14px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .toast-icon { font-size: 1.2rem; }
+
+        footer {
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 24px 48px;
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+        }
+        footer span { color: var(--saffron); }
+
+        /* ─────────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────────── */
+        @media (max-width: 900px) {
+            .order-section {
+                flex-direction: column;
+                padding: 48px 32px;
+                gap: 40px;
+            }
+            .form-card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Header */
+            header {
+                padding: 14px 20px;
+            }
+            nav { display: none; }
+            .hamburger { display: flex; }
+
+            /* Hero */
+            .hero {
+                padding: 48px 20px 40px;
+            }
+            .hero p { font-size: 0.95rem; }
+
+            /* Sections */
+            .section { padding: 40px 20px; }
+            .divider { margin: 0 20px; }
+
+            /* Gallery */
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            /* Order */
+            .order-section {
+                flex-direction: column;
+                padding: 40px 20px;
+                gap: 32px;
+            }
+            .form-card {
+                width: 100%;
+                padding: 24px 18px;
+            }
+            .order-info h2 { font-size: 1.8rem; }
+
+            /* Izoxlar */
+            .izoxlar { padding: 36px 16px 60px; }
+            .izox-form { padding: 22px 18px; }
+            .izox-body { margin-left: 0; margin-top: 10px; }
+            .izox-actions { margin-left: 0; }
+
+            /* Footer */
+            footer { padding: 20px 20px; }
+        }
+
+        @media (max-width: 420px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 1.9rem; }
+            .section-title { font-size: 1.5rem; }
+            .div2 { gap: 10px; }
+            .div2 a { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Ota <span>Bobo</span></div>
+        <nav>
+            <a href="#">Biz haqimizda</a>
+            <a href="#menu">Menyu</a>
+            <a href="#order">Zakaz berish</a>
+            <a href="#izoxlar">Izoxlar</a>
+        </nav>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menyuni ochish">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#" onclick="closeMobileNav()">Biz haqimizda</a>
+        <a href="#menu" onclick="closeMobileNav()">Menyu</a>
+        <a href="#order" onclick="closeMobileNav()">Zakaz berish</a>
+        <a href="#izoxlar" onclick="closeMobileNav()">Izoxlar</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-tag">🫓 Gulakandozning eng mazali somsasi</div>
+        <h1>Ota Bobo<br>Somsalariga<br>Xush Kelibsiz</h1>
+        <p>Har bir somsa sevgi bilan tayyorlanadi — bir marta tatib ko'ring, qaytib kelasiz.</p>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" id="menu">
+        <div class="section-label">Bizning somsalar</div>
+        <h2 class="section-title">Eng zur somsalar</h2>
+        <div class="gallery">
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-22-04 (2).jpg" alt="Somsa 1"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-22-04.jpg" alt="Somsa 2"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-22-05.jpg" alt="Somsa 3"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-22-06.jpg" alt="Somsa 4"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-22-55.jpg" alt="Somsa 5"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-23-15.jpg" alt="Somsa 6"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-24-13.jpg" alt="Somsa 7"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-24-28.jpg" alt="Somsa 8"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-24-20.jpg" alt="Somsa 9"></div>
+            <div class="gallery-item"><img src="./photo_2026-06-21_23-24-24.jpg" alt="Somsa 10"></div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ORDER FORM -->
+    <section class="order-section" id="order">
+        <div class="order-info">
+            <div class="section-label">Zakaz berish</div>
+            <h2>Issiq somsa</h2>
+            <p>Xonangiz raqamini kiriting, biz somsani to'g'ri topib keltiramiz. Kutish vaqti: 15–20 daqiqa.</p>
+            <ul class="perks">
+                <li>Yangi tandirdan chiqarilgan</li>
+                <li>Tez yetkazib berish</li>
+                <li>Minimal buyurtma: 1 dona</li>
+                <li>To'lov naqd yoki karta</li>
+            </ul>
+        </div>
+
+        <div>
+            <div class="form-card" id="form">
+                <div class="div2">
+                    <a href="#zak" class="zakaz">Zakaz berish</a>
+                    <a class="dastavka" href="#das">Dastavka qilish</a>
+                </div>
+                <p>Barcha maydonlarni to'ldiring</p>
+
+                <div class="zakaz-dastavka">
+                    <div class="zakaz1" id="zak">
+                        <div class="field">
+                            <label>Ismingiz</label>
+                            <input type="text" class="input-Som-Ism">
+                        </div>
+                        <div class="field">
+                            <label>Somsaning soni</label>
+                            <input type="number" min="1" class="input-Som-Son">
+                        </div>
+                        <div class="field">
+                            <label>Xona raqami</label>
+                            <input type="number" min="1" class="input-Som-Xon">
+                        </div>
+                    </div>
+
+                    <div class="dastavka1" id="das">
+                        <div class="field">
+                            <label>Ismingiz</label>
+                            <input type="text" class="das-ism">
+                        </div>
+                        <div class="field">
+                            <label>Telefon raqamingiz</label>
+                            <input type="number" class="das-telefon">
+                        </div>
+                        <div class="field">
+                            <label>Somsaning soni</label>
+                            <input type="number" min="1" class="das-son">
+                        </div>
+                        <div class="field">
+                            <label>Uy manzilingiz</label>
+                            <input type="text" class="das-manzil">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-order bbtn">Zakaz Qilish →</button>
+        </div>
+    </section>
+
+    <!-- IZOXLAR -->
+    <section class="izoxlar" id="izoxlar">
+        <div class="section-header">
+            <span class="section-label">Fikr-mulohazalar</span>
+            <h2 class="section-title">Izoxlar</h2>
+            <p class="section-subtitle">Somsalarimiz haqida fikringizni biz bilan ulashing. Har bir izox biz uchun qimmatli!</p>
+        </div>
+
+        <div class="izox-form">
+            <div class="form-header">
+                <div class="form-avatar">?</div>
+                <div class="form-header-text">
+                    <strong>Mehmon</strong>
+                    Ismingizni yozing va izox qoldiring
+                </div>
+            </div>
+            <div class="izox-textarea-wrapper">
+                <input type="text" class="izox-textarea-ism" id="izoxTextism" placeholder="Ismingizni kiriting">
+                <textarea class="izox-textarea" id="izoxText" placeholder="Somsalarimiz sizga qanday tuyuldi? Fikringizni yozing..." maxlength="500"></textarea>
+            </div>
+            <div class="form-footer">
+                <button class="izox-btn" id="izoxBtn">Izoxni yuborish</button>
+            </div>
+        </div>
+
+        <div class="izoxlar-list" id="izoxlarList"></div>
+    </section>
+
+    <footer>
+        © 2026 <span>Ota Bobo Somsalari</span>
+    </footer>
+
+    <script type="module" src="./login.js"></script>
+    <script>
+        // Hamburger toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+        });
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('open');
+        }
+    </script>
+</body>
+</html>
