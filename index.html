@@ -10,61 +10,54 @@
     :root{--saffron:#C8860A;--clay:#8B3A1C;--cream:#FDF6EC;--charcoal:#1A1208}
     body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--charcoal);min-height:100vh}
 
-    /* HEADER */
     header{background:var(--charcoal);padding:16px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
     .logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--saffron)}
     .logo span{color:#fff}
-    .logo .admin-label{color:#9C8268;font-size:0.9rem;font-family:Inter}
-    .live{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:5px 14px;color:#fff;font-size:12px;font-weight:600;white-space:nowrap}
-    .dot{width:8px;height:8px;border-radius:50%;background:#4caf50;animation:pulse 1.4s infinite;flex-shrink:0}
+    .live{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:5px 14px;color:#fff;font-size:12px;font-weight:600}
+    .dot{width:8px;height:8px;border-radius:50%;background:#4caf50;animation:pulse 1.4s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
 
-    /* TABS */
-    .tabs{display:flex;gap:0;padding:24px 36px 0;border-bottom:2px solid #E8D9C0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-    .tabs::-webkit-scrollbar{display:none}
-    .tab-btn{padding:10px 28px;font-size:14px;font-weight:600;border:none;background:none;cursor:pointer;color:#9C8268;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;letter-spacing:0.03em;white-space:nowrap;flex-shrink:0}
+    .tabs{display:flex;gap:0;padding:24px 36px 0;border-bottom:2px solid #E8D9C0;margin-bottom:0;overflow-x:auto}
+    .tab-btn{padding:10px 22px;font-size:13px;font-weight:600;border:none;background:none;cursor:pointer;color:#9C8268;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;letter-spacing:0.03em;white-space:nowrap}
     .tab-btn.active{color:var(--charcoal);border-bottom-color:var(--saffron)}
     .tab-btn:hover:not(.active){color:var(--charcoal)}
     .tab-content{display:none}
     .tab-content.active{display:block}
 
-    /* STATS */
+    /* STATS CARDS */
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:28px 36px 0}
     .stat{background:#fff;border-radius:10px;padding:18px 22px;box-shadow:0 2px 10px rgba(26,18,8,0.07)}
     .stat-num{font-size:30px;font-weight:700}
     .stat-label{font-size:12px;color:#9C8268;margin-top:2px;font-weight:500}
 
-    /* ORDERS HEAD */
-    .head{padding:28px 36px 12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    /* ORDERS */
+    .head{padding:28px 36px 12px;display:flex;align-items:center;justify-content:space-between}
     .head h2{font-family:'Playfair Display',serif;font-size:1.4rem}
-    .filters{display:flex;gap:8px;flex-wrap:wrap}
-    .fbtn{padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid #E8D9C0;background:#fff;cursor:pointer;color:var(--charcoal);transition:all 0.15s;white-space:nowrap}
+    .filters{display:flex;gap:8px}
+    .fbtn{padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid #E8D9C0;background:#fff;cursor:pointer;color:var(--charcoal);transition:all 0.15s}
     .fbtn.active{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
-
-    /* ORDERS LIST */
     .orders{padding:0 36px 48px;display:flex;flex-direction:column;gap:12px}
-    .card{background:#fff;border-radius:12px;padding:18px 22px;box-shadow:0 2px 10px rgba(26,18,8,0.06);display:flex;align-items:center;gap:16px;transition:box-shadow 0.2s;flex-wrap:wrap}
+    .card{background:#fff;border-radius:12px;padding:18px 22px;box-shadow:0 2px 10px rgba(26,18,8,0.06);display:flex;align-items:center;gap:18px;transition:box-shadow 0.2s}
     .card:hover{box-shadow:0 4px 20px rgba(26,18,8,0.10)}
     .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--clay));display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;font-weight:700;flex-shrink:0}
-    .info{flex:1;min-width:120px}
+    .info{flex:1}
     .name{font-size:16px;font-weight:600}
     .meta{font-size:13px;color:#9C8268;margin-top:4px}
     .time{font-size:11px;color:#C4B49A;margin-top:3px}
     .pill{font-size:12px;font-weight:600;padding:4px 13px;border-radius:20px;flex-shrink:0}
     .pending{background:#fff8e1;color:#e65100}
     .accepted{background:#e8f5e9;color:#2e7d32}
-    .card-actions{display:flex;gap:8px;flex-shrink:0}
-    .abtn{background:var(--clay);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.2s,transform 0.15s}
+    .abtn{background:var(--clay);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.2s,transform 0.15s;flex-shrink:0}
     .abtn:hover{background:#A04520;transform:translateY(-1px)}
     .abtn:disabled{opacity:0.4;cursor:not-allowed;transform:none}
-    .dbtn{background:#fff0f0;color:#c62828;border:1.5px solid #ffcdd2;border-radius:8px;padding:9px 14px;font-size:15px;cursor:pointer;transition:all 0.2s}
+    .dbtn{background:#fff0f0;color:#c62828;border:1.5px solid #ffcdd2;border-radius:8px;padding:9px 14px;font-size:15px;cursor:pointer;transition:all 0.2s;flex-shrink:0}
     .dbtn:hover{background:#c62828;color:#fff;border-color:#c62828}
     .dbtn:disabled{opacity:0.4;cursor:not-allowed}
     .empty{text-align:center;padding:64px 20px;color:#C4B49A;font-size:15px}
     .empty .icon{font-size:52px;display:block;margin-bottom:14px}
 
     /* COMMENTS */
-    .comments-head{padding:28px 36px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .comments-head{padding:28px 36px 16px;display:flex;align-items:center;justify-content:space-between}
     .comments-head h2{font-family:'Playfair Display',serif;font-size:1.4rem}
     .comment-count-badge{background:var(--saffron);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:10px}
     .comments-list{padding:0 36px 48px;display:flex;flex-direction:column;gap:12px}
@@ -73,7 +66,7 @@
     @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     .ccard-top{display:flex;align-items:center;gap:14px;margin-bottom:12px}
     .cavatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--clay));display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700;flex-shrink:0}
-    .cmeta{flex:1;min-width:0}
+    .cmeta{flex:1}
     .cname{font-size:15px;font-weight:600;color:var(--charcoal)}
     .ctime{font-size:11px;color:#C4B49A;margin-top:2px}
     .cbody{font-size:14px;line-height:1.65;color:#4A3F2F;padding:12px 16px;background:var(--cream);border-radius:8px;margin-bottom:14px;word-wrap:break-word}
@@ -83,17 +76,9 @@
     .del-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none}
     .del-btn svg{width:15px;height:15px;fill:currentColor}
 
-    /* NOTIFICATION */
-    #notif-popup{display:none;position:fixed;top:24px;right:24px;z-index:9999;background:var(--charcoal);color:#fff;border-radius:14px;padding:18px 22px;min-width:260px;max-width:calc(100vw - 32px);box-shadow:0 8px 32px rgba(0,0,0,0.25);border-left:4px solid var(--saffron);animation:slideIn 0.4s ease}
-    @keyframes slideIn{from{opacity:0;right:0}to{opacity:1;right:24px}}
-    #notif-popup .n-title{font-size:15px;font-weight:700;margin-bottom:4px}
-    #notif-popup .n-body{font-size:13px;opacity:0.8}
-    #notif-popup .n-close{position:absolute;top:10px;right:14px;background:none;border:none;color:#fff;font-size:18px;cursor:pointer;opacity:0.6}
-    #notif-popup .n-close:hover{opacity:1}
-
     /* ISH VAQTI */
     .vaqt-section{padding:28px 36px 48px}
-    .vaqt-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(26,18,8,0.08);max-width:480px;width:100%}
+    .vaqt-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(26,18,8,0.08);max-width:480px}
     .vaqt-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:6px}
     .vaqt-card p{font-size:13px;color:#9C8268;margin-bottom:28px}
     .vaqt-status{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;font-size:14px;font-weight:600;margin-bottom:24px}
@@ -103,13 +88,13 @@
     .vaqt-status.open .sdot{background:#4caf50;animation:pulse 1.4s infinite}
     .vaqt-status.closed .sdot{background:#e65100}
     .vaqt-row{display:flex;gap:16px;margin-bottom:20px}
-    .vaqt-field{flex:1;min-width:0}
+    .vaqt-field{flex:1}
     .vaqt-field label{display:block;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--charcoal);margin-bottom:8px}
     .vaqt-field input{width:100%;padding:12px 14px;border:1.5px solid #E8D9C0;border-radius:8px;font-family:'Inter',sans-serif;font-size:1rem;color:var(--charcoal);background:var(--cream);outline:none;transition:border-color 0.2s}
     .vaqt-field input:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(200,134,10,0.12)}
     .vaqt-toggle{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding:14px 18px;background:var(--cream);border-radius:10px}
-    .vaqt-toggle label{font-size:14px;font-weight:600;cursor:pointer;flex:1;min-width:0}
-    .vaqt-toggle span{font-size:12px;color:#9C8268;white-space:nowrap}
+    .vaqt-toggle label{font-size:14px;font-weight:600;cursor:pointer;flex:1}
+    .vaqt-toggle span{font-size:12px;color:#9C8268}
     .toggle-switch{position:relative;width:44px;height:24px;flex-shrink:0}
     .toggle-switch input{opacity:0;width:0;height:0}
     .toggle-slider{position:absolute;inset:0;background:#E8D9C0;border-radius:24px;cursor:pointer;transition:0.3s}
@@ -120,75 +105,131 @@
     .save-vaqt-btn:hover{background:#A04520;transform:translateY(-1px)}
     .save-vaqt-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
 
-    /* TOAST */
-    .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--charcoal);color:#fff;border-radius:12px;padding:13px 26px;font-size:14px;font-weight:600;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.2);opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;white-space:nowrap;max-width:calc(100vw - 32px);text-align:center}
+    /* NARX TAB */
+    .narx-section{padding:28px 36px 48px}
+    .narx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+    .narx-card{background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 12px rgba(26,18,8,0.07);display:flex;align-items:center;gap:16px}
+    .narx-icon{font-size:32px;flex-shrink:0}
+    .narx-info{flex:1}
+    .narx-name{font-size:15px;font-weight:600;margin-bottom:8px}
+    .narx-input-wrap{display:flex;align-items:center;gap:8px}
+    .narx-input{width:100px;padding:8px 12px;border:1.5px solid #E8D9C0;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--charcoal);background:var(--cream);outline:none;transition:border-color 0.2s}
+    .narx-input:focus{border-color:var(--saffron)}
+    .narx-unit{font-size:13px;color:#9C8268;font-weight:500}
+    .save-narx-btn{background:var(--clay);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.2s,transform 0.15s}
+    .save-narx-btn:hover{background:#A04520;transform:translateY(-1px)}
+    .narx-section-title{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:6px}
+    .narx-section-sub{font-size:13px;color:#9C8268;margin-bottom:24px}
+
+    /* E'LON TAB */
+    .elon-section{padding:28px 36px 48px}
+    .elon-form-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(26,18,8,0.08);max-width:560px;margin-bottom:32px}
+    .elon-form-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:6px}
+    .elon-form-card p{font-size:13px;color:#9C8268;margin-bottom:24px}
+    .elon-field{margin-bottom:18px}
+    .elon-field label{display:block;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--charcoal);margin-bottom:8px}
+    .elon-field input,.elon-field textarea,.elon-field select{width:100%;padding:12px 14px;border:1.5px solid #E8D9C0;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;color:var(--charcoal);background:var(--cream);outline:none;transition:border-color 0.2s;resize:vertical}
+    .elon-field input:focus,.elon-field textarea:focus,.elon-field select:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(200,134,10,0.12)}
+    .elon-btns{display:flex;gap:10px}
+    .save-elon-btn{flex:1;padding:13px;background:var(--clay);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;border:none;border-radius:10px;cursor:pointer;transition:background 0.2s,transform 0.15s}
+    .save-elon-btn:hover{background:#A04520;transform:translateY(-1px)}
+    .del-elon-btn{padding:13px 18px;background:#fff0f0;color:#c62828;border:1.5px solid #ffcdd2;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s}
+    .del-elon-btn:hover{background:#c62828;color:#fff}
+    .elon-preview{background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 2px 10px rgba(26,18,8,0.06);max-width:560px;border-left:4px solid var(--saffron)}
+    .elon-preview h4{font-size:13px;font-weight:600;color:#9C8268;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em}
+    .elon-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:8px}
+    .elon-badge.aksiya{background:#fff8e1;color:#e65100}
+    .elon-badge.yangi{background:#e8f5e9;color:#2e7d32}
+    .elon-badge.xabar{background:#e3f2fd;color:#1565c0}
+    .elon-text{font-size:14px;color:#4A3F2F;line-height:1.6}
+
+    /* STATISTIKA TAB */
+    .stat-section{padding:28px 36px 48px}
+    .stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+    .stat-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 10px rgba(26,18,8,0.07);text-align:center}
+    .stat-card .big-num{font-size:32px;font-weight:700;color:var(--charcoal)}
+    .stat-card .sub{font-size:12px;color:#9C8268;margin-top:4px;font-weight:500}
+    .stat-card .change{font-size:12px;font-weight:600;margin-top:6px;padding:2px 8px;border-radius:10px;display:inline-block}
+    .change.up{background:#e8f5e9;color:#2e7d32}
+    .change.down{background:#fff3e0;color:#e65100}
+    .chart-card{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(26,18,8,0.07);margin-bottom:20px}
+    .chart-card h4{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:20px}
+    .chart-wrap{position:relative;height:200px}
+    .bar-chart{display:flex;align-items:flex-end;gap:8px;height:100%;padding-top:8px}
+    .bar-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%}
+    .bar-fill{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(to top,var(--clay),var(--saffron));min-height:4px;transition:height 0.6s cubic-bezier(0.34,1.2,0.64,1)}
+    .bar-label{font-size:10px;color:#9C8268;font-weight:500;text-align:center}
+    .bar-val{font-size:11px;font-weight:700;color:var(--charcoal)}
+    .hour-chart{display:flex;align-items:flex-end;gap:4px;height:100%;padding-top:8px}
+    .hour-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%}
+    .hour-fill{width:100%;border-radius:4px 4px 0 0;background:var(--saffron);opacity:0.7;min-height:2px;transition:height 0.5s ease}
+    .hour-fill.peak{background:var(--clay);opacity:1}
+    .hour-label{font-size:9px;color:#C4B49A;writing-mode:vertical-lr;transform:rotate(180deg)}
+    .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .type-chart{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(26,18,8,0.07)}
+    .type-chart h4{font-size:14px;font-weight:600;margin-bottom:16px}
+    .type-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .type-label{font-size:13px;font-weight:500;width:80px;flex-shrink:0}
+    .type-bar-bg{flex:1;height:10px;background:#F0E8D8;border-radius:10px;overflow:hidden}
+    .type-bar-fill{height:100%;border-radius:10px;transition:width 0.8s ease}
+    .type-fill-zakaz{background:var(--clay)}
+    .type-fill-dastavka{background:var(--saffron)}
+    .type-pct{font-size:12px;font-weight:700;color:var(--charcoal);width:36px;text-align:right}
+    .top-hours{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(26,18,8,0.07)}
+    .top-hours h4{font-size:14px;font-weight:600;margin-bottom:16px}
+    .top-hour-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F0E8D8}
+    .top-hour-row:last-child{border-bottom:none}
+    .top-hour-time{font-size:14px;font-weight:600}
+    .top-hour-count{font-size:13px;color:#9C8268}
+    .top-hour-badge{background:var(--cream);color:var(--saffron);font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;border:1px solid #E8D9C0}
+
+    /* NOTIFICATION */
+    #notif-popup{display:none;position:fixed;top:24px;right:24px;z-index:9999;background:var(--charcoal);color:#fff;border-radius:14px;padding:18px 22px;min-width:280px;box-shadow:0 8px 32px rgba(0,0,0,0.25);border-left:4px solid var(--saffron);animation:slideIn 0.4s ease}
+    @keyframes slideIn{from{opacity:0;right:0}to{opacity:1;right:24px}}
+    #notif-popup .n-title{font-size:15px;font-weight:700;margin-bottom:4px}
+    #notif-popup .n-body{font-size:13px;opacity:0.8}
+    #notif-popup .n-close{position:absolute;top:10px;right:14px;background:none;border:none;color:#fff;font-size:18px;cursor:pointer;opacity:0.6}
+    #notif-popup .n-close:hover{opacity:1}
+
+    .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--charcoal);color:#fff;border-radius:12px;padding:13px 26px;font-size:14px;font-weight:600;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.2);opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none}
     .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
-    /* ── RESPONSIVE ── */
-    @media(max-width:700px){
-      header{padding:12px 16px}
-
+    @media(max-width:768px){
+      .stat-cards{grid-template-columns:repeat(2,1fr)}
+      .stat-row{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .orders,.comments-list{padding:0 16px 40px}
+      .head,.comments-head{padding:20px 16px 10px;flex-direction:column;align-items:flex-start;gap:10px}
+      header{padding:14px 16px}
       .tabs{padding:16px 16px 0}
-      .tab-btn{padding:8px 14px;font-size:13px}
-
-      .stats{grid-template-columns:1fr 1fr;padding:16px 16px 0;gap:10px}
-      .stat{padding:14px 16px}
-      .stat-num{font-size:24px}
-
-      .head{padding:18px 16px 10px}
-      .head h2{font-size:1.2rem}
-
-      .orders{padding:0 16px 40px;gap:10px}
-
-      /* Card mobilda vertikal */
-      .card{padding:16px;gap:12px}
-      .card-actions{width:100%;justify-content:flex-end}
-
-      .comments-head{padding:18px 16px 12px}
-      .comments-head h2{font-size:1.2rem}
-      .comments-list{padding:0 16px 40px;gap:10px}
-      .ccard{padding:16px 16px}
-
-      .vaqt-section{padding:20px 16px 40px}
-      .vaqt-card{padding:22px 18px}
-      .vaqt-row{flex-direction:column;gap:12px}
-
-      /* Notification mobilda to'liq kenglik */
-      #notif-popup{top:auto;bottom:16px;right:16px;left:16px;min-width:unset;animation:slideUp 0.4s ease}
-      @keyframes slideUp{from{opacity:0;bottom:0}to{opacity:1;bottom:16px}}
-    }
-
-    @media(max-width:420px){
-      .stats{grid-template-columns:1fr}
-      .filters{gap:6px}
-      .fbtn{padding:5px 12px;font-size:11px}
-      .tab-btn{padding:8px 10px;font-size:12px}
-      .abtn{padding:8px 14px;font-size:12px}
+      .tab-btn{padding:8px 14px;font-size:12px}
+      .narx-section,.elon-section,.vaqt-section,.stat-section{padding:20px 16px 40px}
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">Ota <span>Bobo</span> <span class="admin-label">Admin</span></div>
+  <div class="logo">Ota <span>Bobo</span> <span style="color:#9C8268;font-size:0.9rem;font-family:Inter">Admin</span></div>
   <div class="live"><span class="dot"></span> Real-time</div>
 </header>
 
-<!-- TABS -->
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('orders', this)">🫓 Buyurtmalar</button>
   <button class="tab-btn" onclick="switchTab('comments', this)">💬 Izoxlar</button>
+  <button class="tab-btn" onclick="switchTab('narx', this)">💰 Narxlar</button>
+  <button class="tab-btn" onclick="switchTab('elon', this)">📣 E'lonlar</button>
+  <button class="tab-btn" onclick="switchTab('statistika', this)">📊 Statistika</button>
   <button class="tab-btn" onclick="switchTab('vaqt', this)">🕐 Ish vaqti</button>
 </div>
 
-<!-- ══ BUYURTMALAR TAB ══ -->
+<!-- ══ BUYURTMALAR ══ -->
 <div class="tab-content active" id="tab-orders">
   <div class="stats">
     <div class="stat"><div class="stat-num" id="totalCount">0</div><div class="stat-label">Jami buyurtma</div></div>
     <div class="stat"><div class="stat-num" id="pendingCount" style="color:#e65100">0</div><div class="stat-label">Kutilmoqda</div></div>
     <div class="stat"><div class="stat-num" id="acceptedCount" style="color:#2e7d32">0</div><div class="stat-label">Qabul qilindi</div></div>
   </div>
-
   <div class="head">
     <h2>Buyurtmalar</h2>
     <div class="filters">
@@ -197,13 +238,12 @@
       <button class="fbtn" onclick="setFilter('accepted',this)">Qabul qilindi</button>
     </div>
   </div>
-
   <div class="orders" id="ordersList">
     <div class="empty"><span class="icon">⏳</span>Yuklanmoqda...</div>
   </div>
 </div>
 
-<!-- ══ IZOXLAR TAB ══ -->
+<!-- ══ IZOXLAR ══ -->
 <div class="tab-content" id="tab-comments">
   <div class="comments-head">
     <h2>Izoxlar <span class="comment-count-badge" id="commentCount">0</span></h2>
@@ -213,18 +253,127 @@
   </div>
 </div>
 
-<!-- ══ ISH VAQTI TAB ══ -->
+<!-- ══ NARXLAR ══ -->
+<div class="tab-content" id="tab-narx">
+  <div class="narx-section">
+    <h2 class="narx-section-title">💰 Narxlarni boshqarish</h2>
+    <p class="narx-section-sub">Quyida narxlarni o'zgartiring. Foydalanuvchi sahifasida avtomatik ko'rinadi.</p>
+    <div class="narx-grid" id="narxGrid">
+      <div class="empty"><span class="icon">⏳</span>Yuklanmoqda...</div>
+    </div>
+    <button class="save-narx-btn" onclick="saveNarxlar()">💾 Narxlarni saqlash</button>
+  </div>
+</div>
+
+<!-- ══ E'LONLAR ══ -->
+<div class="tab-content" id="tab-elon">
+  <div class="elon-section">
+    <div class="elon-form-card">
+      <h3>📣 E'lon boshqaruvi</h3>
+      <p>Foydalanuvchi sahifasida banner ko'rinishida chiqadi.</p>
+      <div class="elon-field">
+        <label>E'lon turi</label>
+        <select id="elonTur">
+          <option value="aksiya">🔥 Aksiya</option>
+          <option value="yangi">✨ Yangilik</option>
+          <option value="xabar">📢 Xabar</option>
+        </select>
+      </div>
+      <div class="elon-field">
+        <label>Sarlavha</label>
+        <input type="text" id="elonTitle" placeholder="Masalan: Bugun 10% chegirma!">
+      </div>
+      <div class="elon-field">
+        <label>Matn</label>
+        <textarea id="elonText" rows="3" placeholder="E'lon matni..."></textarea>
+      </div>
+      <div class="elon-btns">
+        <button class="save-elon-btn" onclick="saveElon()">📣 E'lonni chiqarish</button>
+        <button class="del-elon-btn" onclick="deleteElon()">🗑️ O'chirish</button>
+      </div>
+    </div>
+
+    <div class="elon-preview" id="elonPreview" style="display:none">
+      <h4>Hozirgi e'lon</h4>
+      <div class="elon-badge" id="elonBadge"></div>
+      <div class="elon-text" id="elonPreviewText"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STATISTIKA ══ -->
+<div class="tab-content" id="tab-statistika">
+  <div class="stat-section">
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="big-num" id="statJami">0</div>
+        <div class="sub">Jami buyurtma</div>
+      </div>
+      <div class="stat-card">
+        <div class="big-num" id="statBugun">0</div>
+        <div class="sub">Bugungi buyurtma</div>
+      </div>
+      <div class="stat-card">
+        <div class="big-num" id="statDastavka">0</div>
+        <div class="sub">Dastavka</div>
+      </div>
+      <div class="stat-card">
+        <div class="big-num" id="statXona">0</div>
+        <div class="sub">Xona zakazi</div>
+      </div>
+    </div>
+
+    <!-- 7 kunlik grafik -->
+    <div class="chart-card">
+      <h4>📈 So'nggi 7 kun buyurtmalari</h4>
+      <div class="chart-wrap">
+        <div class="bar-chart" id="barChart"></div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <!-- Tur bo'yicha -->
+      <div class="type-chart">
+        <h4>🫓 Buyurtma turlari</h4>
+        <div class="type-bar-row">
+          <div class="type-label">Xona</div>
+          <div class="type-bar-bg"><div class="type-bar-fill type-fill-zakaz" id="zakazBar" style="width:50%"></div></div>
+          <div class="type-pct" id="zakazPct">50%</div>
+        </div>
+        <div class="type-bar-row">
+          <div class="type-label">Dastavka</div>
+          <div class="type-bar-bg"><div class="type-bar-fill type-fill-dastavka" id="dastavkaBar" style="width:50%"></div></div>
+          <div class="type-pct" id="dastavkaPct">50%</div>
+        </div>
+      </div>
+
+      <!-- Top soatlar -->
+      <div class="top-hours">
+        <h4>⏰ Eng faol vaqtlar</h4>
+        <div id="topHoursList"></div>
+      </div>
+    </div>
+
+    <!-- Soatlik grafik -->
+    <div class="chart-card" style="margin-top:16px">
+      <h4>🕐 Soat bo'yicha buyurtmalar</h4>
+      <div class="chart-wrap">
+        <div class="hour-chart" id="hourChart"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ISH VAQTI ══ -->
 <div class="tab-content" id="tab-vaqt">
   <div class="vaqt-section">
     <div class="vaqt-card">
       <h3>🕐 Ish vaqtini boshqarish</h3>
       <p>Quyida ish vaqtini o'zgartiring. User sahifasida avtomatik yangilanadi.</p>
-
       <div class="vaqt-status" id="vaqtStatus">
         <span class="sdot"></span>
         <span id="vaqtStatusText">Yuklanmoqda...</span>
       </div>
-
       <div class="vaqt-toggle">
         <label for="isActiveToggle">Sayt hozir ishlayaptimi?</label>
         <span id="toggleLabel">—</span>
@@ -233,7 +382,6 @@
           <span class="toggle-slider"></span>
         </label>
       </div>
-
       <div class="vaqt-row">
         <div class="vaqt-field">
           <label>Ochilish vaqti</label>
@@ -244,22 +392,17 @@
           <input type="number" id="closeHour" min="0" max="23" placeholder="11">
         </div>
       </div>
-
-      <button class="save-vaqt-btn" id="saveVaqtBtn" onclick="saveWorkHours()">
-        💾 Saqlash
-      </button>
+      <button class="save-vaqt-btn" id="saveVaqtBtn" onclick="saveWorkHours()">💾 Saqlash</button>
     </div>
   </div>
 </div>
 
-<!-- Notification popup -->
 <div id="notif-popup">
   <button class="n-close" onclick="closeNotif()">✕</button>
   <div class="n-title">🫓 Yangi buyurtma!</div>
   <div class="n-body" id="notif-body"></div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script src="./admin.js"></script>
